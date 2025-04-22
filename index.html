@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMate - Mood Journal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/app.js" defer></script>
+    <script src="js/weather.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <link rel="icon" href="assets/icons/weather/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>MoodMate</h1>
+            <div class="weather-display">
+                <span id="weather-icon">⛅</span>
+                <span id="weather-temp">--°C</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="tab-container">
+                <button class="tab-btn active" data-tab="entry">New Entry</button>
+                <button class="tab-btn" data-tab="history">History</button>
+            </div>
+
+            <!-- New Entry Tab -->
+            <section id="entry-tab" class="tab-content active">
+                <!-- In New Entry Tab - For Custom Date -->
+                <div class="date-container">
+                    <input type="date" id="entry-date" class="date-input">
+                </div>
+
+                <!-- In New Entry Tab - Modified Date Display -->
+                <div class="date-container">
+                    <h2 id="current-date"></h2>
+                </div>
+
+                <div class="date-container">
+                    <h2 id="current-date">April 22, 2024</h2>
+                </div>
+
+                <div class="mood-form">
+                    <h3>How are you feeling today?</h3>
+                    <div class="mood-selector">
+                        <button class="mood-btn" data-mood="happy">😄</button>
+                        <button class="mood-btn" data-mood="neutral">😐</button>
+                        <button class="mood-btn" data-mood="sad">😔</button>
+                        <button class="mood-btn" data-mood="angry">😠</button>
+                        <button class="mood-btn" data-mood="sick">🤢</button>
+                    </div>
+
+                    <div class="note-container">
+                        <textarea id="mood-note" placeholder="Add a note..."></textarea>
+                    </div>
+
+                    <button id="save-entry" class="btn save-btn">Save</button>
+                </div>
+            </section>
+
+            <!-- History Tab -->
+            <section id="history-tab" class="tab-content">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month">&lt;</button>
+                        <h3 id="calendar-month-year">April 2024</h3>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-days">
+                            <span>S</span>
+                            <span>M</span>
+                            <span>T</span>
+                            <span>W</span>
+                            <span>T</span>
+                            <span>F</span>
+                            <span>S</span>
+                        </div>
+                        <div id="calendar-dates" class="calendar-dates"></div>
+                    </div>
+                </div>
+
+                <div class="entries-container">
+                    <div class="filter-container">
+                        <label for="mood-filter">Filter by mood:</label>
+                        <select id="mood-filter">
+                            <option value="all">All moods</option>
+                            <option value="happy">Happy</option>
+                            <option value="neutral">Neutral</option>
+                            <option value="sad">Sad</option>
+                            <option value="angry">Angry</option>
+                            <option value="sick">Sick</option>
+                        </select>
+                    </div>
+
+                    <h3>All Notes</h3>
+                    <div id="entries-list" class="entries-list"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="notification" class="notification">Entry saved successfully!</div>
+    </div>
+
+    <!-- Template for entry card -->
+    <template id="entry-template">
+        <div class="entry-card">
+            <div class="entry-mood"></div>
+            <div class="entry-content">
+                <p class="entry-note"></p>
+                <p class="entry-date"></p>
+            </div>
+            <div class="entry-weather">
+                <span class="weather-icon"></span>
+                <span class="weather-temp"></span>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>
